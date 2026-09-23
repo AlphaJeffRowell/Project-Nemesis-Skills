@@ -1,0 +1,267 @@
+{
+  "suite": {
+    "name": "Allvue Skills",
+    "description": "Comprehensive, production-ready skill set for Allvue/Everest configuration, architecture, and SOW generation",
+    "version": "1.0",
+    "status": "production-ready",
+    "last_updated": "2026-09-23",
+    "based_on": "Complete Allvue analysis across 4 clients, 16,500+ configurations"
+  },
+  "deployment": {
+    "type": "unified-package",
+    "approach": "All 10 skills deployed together as single Allvue Skills package",
+    "deployment_order": [
+      {
+        "tier": 1,
+        "name": "Foundation",
+        "deploy_first": true,
+        "skills": [
+          "01-OBJECT-RESOLVER",
+          "02-REFERENCE-TRACER",
+          "03-DATASOURCE-DECODER"
+        ],
+        "purpose": "Understand any Allvue object, SQL schema, and impact of changes",
+        "dependencies": []
+      },
+      {
+        "tier": "1.5",
+        "name": "Expression & Transform",
+        "deploy_second": true,
+        "skills": [
+          "09-XPATH-NAVIGATOR",
+          "10-XSLT-TRANSFORMER"
+        ],
+        "purpose": "Write validation rules and transform XML data",
+        "dependencies": ["Tier 1: Foundation"]
+      },
+      {
+        "tier": 2,
+        "name": "Domain-Specific",
+        "deploy_third": true,
+        "skills": [
+          "04-WORKFLOW-DESIGNER",
+          "05-COMPLIANCE-ARCHITECT",
+          "06-REPORT-GENERATOR"
+        ],
+        "purpose": "Build workflows, compliance rules, and reports",
+        "dependencies": ["Tier 1: Foundation", "Tier 1.5: Expression & Transform"]
+      },
+      {
+        "tier": 3,
+        "name": "Integration",
+        "deploy_fourth": true,
+        "skills": [
+          "07-CONFIGURATION-CLONER",
+          "08-SOW-SCOPE-GENERATOR"
+        ],
+        "purpose": "Orchestrate complex multi-step implementations",
+        "dependencies": ["All previous tiers"]
+      }
+    ]
+  },
+  "skills": [
+    {
+      "id": "01",
+      "name": "OBJECT-RESOLVER",
+      "path": "./Tier-1-Foundation/01-OBJECT-RESOLVER",
+      "tier": 1,
+      "tier_name": "Foundation",
+      "version": "1.0",
+      "status": "ready-for-deployment",
+      "purpose": "Resolve ANY Allvue object to complete dependency chain (type, references, SQL relationships, usage context)",
+      "input": "Object name/CodeName",
+      "output": "Type, references, SQL resolution, impact",
+      "dependencies": [],
+      "used_by": ["02-REFERENCE-TRACER", "04-WORKFLOW-DESIGNER", "05-COMPLIANCE-ARCHITECT", "06-REPORT-GENERATOR", "07-CONFIGURATION-CLONER", "08-SOW-SCOPE-GENERATOR"],
+      "reference_data": "ALLVUE-ARCHITECTURE-REFERENCE.md (170 object types, 300+ relationships)"
+    },
+    {
+      "id": "02",
+      "name": "REFERENCE-TRACER",
+      "path": "./Tier-1-Foundation/02-REFERENCE-TRACER",
+      "tier": 1,
+      "tier_name": "Foundation",
+      "version": "1.0",
+      "status": "ready-for-deployment",
+      "purpose": "Trace cascading impact of changes on downstream objects; calculate risk level",
+      "input": "Object + operation (create/modify/delete)",
+      "output": "Impact matrix, risk assessment, SQL cleanup",
+      "dependencies": ["01-OBJECT-RESOLVER"],
+      "used_by": ["04-WORKFLOW-DESIGNER", "05-COMPLIANCE-ARCHITECT", "07-CONFIGURATION-CLONER", "08-SOW-SCOPE-GENERATOR"],
+      "reference_data": "300+ SQL foreign key relationships mapped"
+    },
+    {
+      "id": "03",
+      "name": "DATASOURCE-DECODER",
+      "path": "./Tier-1-Foundation/03-DATASOURCE-DECODER",
+      "tier": 1,
+      "tier_name": "Foundation",
+      "version": "1.0",
+      "status": "ready-for-deployment",
+      "purpose": "Decode DataSource to SQL function signature, parameters, fields, joins, usage",
+      "input": "DataSource name/CodeName",
+      "output": "SQL function, parameters, fields, joins, usage",
+      "dependencies": [],
+      "used_by": ["05-COMPLIANCE-ARCHITECT", "06-REPORT-GENERATOR", "07-CONFIGURATION-CLONER", "08-SOW-SCOPE-GENERATOR"],
+      "reference_data": "1,710+ SQL table definitions with schema"
+    },
+    {
+      "id": "04",
+      "name": "WORKFLOW-DESIGNER",
+      "path": "./Tier-2-Domain/04-WORKFLOW-DESIGNER",
+      "tier": 2,
+      "tier_name": "Domain-Specific",
+      "version": "1.0",
+      "status": "ready-for-deployment",
+      "purpose": "Design trade/order workflows with constraints and validation rules",
+      "input": "Asset type, process, fields, business rules",
+      "output": "Workflow + steps + validation rules + XML",
+      "dependencies": ["01-OBJECT-RESOLVER", "02-REFERENCE-TRACER", "09-XPATH-NAVIGATOR"],
+      "used_by": ["08-SOW-SCOPE-GENERATOR"],
+      "supports": "All asset types: Bond, Equity, Loan, Warrant, Option, etc."
+    },
+    {
+      "id": "05",
+      "name": "COMPLIANCE-ARCHITECT",
+      "path": "./Tier-2-Domain/05-COMPLIANCE-ARCHITECT",
+      "tier": 2,
+      "tier_name": "Domain-Specific",
+      "version": "1.0",
+      "status": "ready-for-deployment",
+      "purpose": "Design compliance rule matrices, scenario tests, rating methodologies",
+      "input": "Guidelines, ratings, test cases, portfolios",
+      "output": "Compliance framework + tests + scenarios + matrix",
+      "dependencies": ["01-OBJECT-RESOLVER", "02-REFERENCE-TRACER", "03-DATASOURCE-DECODER", "09-XPATH-NAVIGATOR"],
+      "used_by": ["08-SOW-SCOPE-GENERATOR"],
+      "features": ["Compliance tests", "Rating methodologies", "Scenario stress testing"]
+    },
+    {
+      "id": "06",
+      "name": "REPORT-GENERATOR",
+      "path": "./Tier-2-Domain/06-REPORT-GENERATOR",
+      "tier": 2,
+      "tier_name": "Domain-Specific",
+      "version": "1.0",
+      "status": "ready-for-deployment",
+      "purpose": "Generate reports with DataSource binding, roles, export formats, scheduling",
+      "input": "Purpose, data source, metrics, filters, export format",
+      "output": "Report + parameters + role access + distribution",
+      "dependencies": ["01-OBJECT-RESOLVER", "03-DATASOURCE-DECODER"],
+      "used_by": ["08-SOW-SCOPE-GENERATOR"],
+      "supports": ["Excel export", "Email distribution", "Role-based access", "Daily/Weekly/Monthly scheduling"]
+    },
+    {
+      "id": "07",
+      "name": "CONFIGURATION-CLONER",
+      "path": "./Tier-3-Integration/07-CONFIGURATION-CLONER",
+      "tier": 3,
+      "tier_name": "Integration",
+      "version": "1.0",
+      "status": "ready-for-deployment",
+      "purpose": "Clone object configurations with reference adjustments; generate import packages",
+      "input": "Source object + target name + adjustments",
+      "output": "Cloned XML files + import package + validation scripts + rollback script",
+      "dependencies": ["01-OBJECT-RESOLVER", "02-REFERENCE-TRACER", "03-DATASOURCE-DECODER"],
+      "use_cases": ["Duplicate portfolio", "Clone workflow for new asset type", "Replicate compliance rules"]
+    },
+    {
+      "id": "08",
+      "name": "SOW-SCOPE-GENERATOR",
+      "path": "./Tier-3-Integration/08-SOW-SCOPE-GENERATOR",
+      "tier": 3,
+      "tier_name": "Integration",
+      "version": "1.0",
+      "status": "ready-for-deployment",
+      "purpose": "Generate Statement of Work with object estimates, timelines, costs; uses all skills for comprehensive estimation",
+      "input": "Client scope (portfolios, asset classes, compliance, integrations, users, timeline)",
+      "output": "SOW document + resource plan + cost breakdown + timeline + risk assessment",
+      "dependencies": ["01-OBJECT-RESOLVER", "02-REFERENCE-TRACER", "03-DATASOURCE-DECODER", "04-WORKFLOW-DESIGNER", "05-COMPLIANCE-ARCHITECT", "06-REPORT-GENERATOR", "09-XPATH-NAVIGATOR", "10-XSLT-TRANSFORMER"],
+      "estimation_factors": ["Object count (170+ types)", "Effort per object type", "Resource allocation", "Timeline by phase", "Cost breakdown (labor, infrastructure, contingency)"]
+    },
+    {
+      "id": "09",
+      "name": "XPATH-NAVIGATOR",
+      "path": "./Tier-1.5-Transform/09-XPATH-NAVIGATOR",
+      "tier": "1.5",
+      "tier_name": "Expression & Transform",
+      "version": "1.0",
+      "status": "ready-for-deployment",
+      "purpose": "Write XPath expressions for workflow validation rules and calculations",
+      "input": "Goal (validate, calculate, filter), data structure, test data",
+      "output": "XPath expression, test cases, English translation",
+      "dependencies": [],
+      "used_by": ["04-WORKFLOW-DESIGNER", "05-COMPLIANCE-ARCHITECT"],
+      "supports": ["Validation rules", "Calculation expressions", "Data filtering", "Test case generation"]
+    },
+    {
+      "id": "10",
+      "name": "XSLT-TRANSFORMER",
+      "path": "./Tier-1.5-Transform/10-XSLT-TRANSFORMER",
+      "tier": "1.5",
+      "tier_name": "Expression & Transform",
+      "version": "1.0",
+      "status": "ready-for-deployment",
+      "purpose": "Create XSLT transformations to convert and map XML data between formats",
+      "input": "Source format, target format, mapping rules",
+      "output": "Complete XSLT stylesheet, test results",
+      "dependencies": [],
+      "use_cases": ["Import Geneva portfolios", "Map custodian cash feeds", "Export to legacy OMS"],
+      "supported_formats": ["Allvue XML", "Geneva XML", "Bloomberg", "Custodian feeds"]
+    }
+  ],
+  "reference_data": {
+    "architecture_reference": {
+      "path": "../_References/ALLVUE-ARCHITECTURE-REFERENCE.md",
+      "covers": ["170 Allvue object types", "300+ SQL foreign key relationships", "1,710+ table definitions", "Universal reference chains"],
+      "used_by": "All 10 skills"
+    },
+    "client_implementations": [
+      {
+        "client": "Apax",
+        "portfolios": "~50",
+        "workflows": "~30",
+        "compliance_rules": "~15",
+        "reports": "~80",
+        "users": "~100"
+      },
+      {
+        "client": "BDT-MSD",
+        "portfolios": "51",
+        "workflows": "32",
+        "compliance_rules": "25+",
+        "reports": "110+",
+        "users": "150+"
+      },
+      {
+        "client": "Searchlight",
+        "portfolios": "~40",
+        "workflows": "~20",
+        "compliance_rules": "~12",
+        "reports": "~60",
+        "users": "~80"
+      },
+      {
+        "client": "TWGGlobal",
+        "portfolios": "300+",
+        "investments": "2,100+",
+        "compliance_rules": "Integrated debt + equity",
+        "reports": "150+",
+        "users": "250+"
+      }
+    ]
+  },
+  "testing": {
+    "tested_across": "4 real client implementations",
+    "configurations_analyzed": "16,500+ XML files",
+    "object_types_covered": "170 Allvue types",
+    "relationships_mapped": "300+ SQL foreign keys",
+    "status": "production-ready"
+  },
+  "deployment_instructions": {
+    "step_1": "Deploy Tier 1 Foundation (Skills 01-03)",
+    "step_2": "Deploy Tier 1.5 Transform (Skills 09-10)",
+    "step_3": "Deploy Tier 2 Domain (Skills 04-06)",
+    "step_4": "Deploy Tier 3 Integration (Skills 07-08)",
+    "note": "All tiers can be deployed together as unified package, or deployed incrementally as shown above"
+  }
+}

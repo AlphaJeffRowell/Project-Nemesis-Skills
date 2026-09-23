@@ -1,0 +1,126 @@
+{
+  "skill": {
+    "name": "new-project",
+    "displayName": "New Project",
+    "version": "1.0",
+    "status": "ready",
+    "created": "2026-09-16",
+    "description": "Scaffolds a complete client project with folders, templates, scripts, and configuration",
+    "triggers": [
+      "new Project",
+      "Create a project",
+      "Set up new client",
+      "Start a project",
+      "Add a project",
+      "New client"
+    ],
+    "capabilities": {
+      "modes": ["new_project", "clone_existing"],
+      "creates": [
+        "folder_structure",
+        "configuration_files",
+        "environment_templates",
+        "git_repository",
+        "pre_commit_hook",
+        "embedded_scripts",
+        "embedded_templates",
+        "documentation"
+      ],
+      "validates": [
+        "workspace_exists",
+        "project_not_exists",
+        "client_code_format",
+        "git_availability",
+        "powershell_version"
+      ]
+    },
+    "workflow": {
+      "steps": 17,
+      "user_interactions": 9,
+      "estimated_duration_seconds": 45
+    },
+    "output": {
+      "location": "C:\\Repo\\Project\\Project-{CODE}",
+      "structure": {
+        "phase_folders": 1,
+        "phase_subfolders": 18,
+        "root_folders": 6,
+        "files_created": 42,
+        "env_files": 2,
+        "total_size_approx_mb": 2
+      }
+    },
+    "dependencies": {
+      "hard_requirements": [
+        "C:\\Repo\\Project\\ (must exist)"
+      ],
+      "soft_requirements": [
+        "Git (optional, warns if missing)",
+        "PowerShell 5.1+ (optional, warns if missing)"
+      ],
+      "embedded_assets": [
+        "templates_from_project_bdt",
+        "scripts_from_project_bdt",
+        "workflows_from_project_bdt",
+        "config_schema_from_nemesis_library"
+      ]
+    },
+    "success_criteria": [
+      "Project folder created",
+      "All 18 subfolders present",
+      "Project-root .env created",
+      "Phase-level .env created",
+      "Git repo initialized",
+      "Pre-commit hook installed",
+      "Configuration populated",
+      "Success message displayed"
+    ],
+    "documentation": {
+      "quick_start": "SKILL.md",
+      "implementation": "IMPLEMENTATION.md",
+      "build_guide": "BUILD_GUIDE.md",
+      "decisions": "DECISIONS.md",
+      "review": "REVIEW_CHECKLIST.md",
+      "deployment": "DEPLOYMENT.md",
+      "readme": "README.md",
+      "manifest": "MANIFEST.json"
+    },
+    "flows": {
+      "new_project": {
+        "steps": [
+          "Setup mode detection",
+          "Q1: Client code (required)",
+          "Q2: Client name (optional)",
+          "Q3: Phase description (required)",
+          "Q4: SharePoint site name (required, project-level)",
+          "Q5: SharePoint base URL (required, project-level)",
+          "Q6: SharePoint path (required, phase-level)",
+          "Q7: SharePoint meeting notes URL (required, phase-level)",
+          "Q8: SharePoint status decks URL (required, phase-level)",
+          "Q9: Asana project GID (optional, phase-level)",
+          "Confirmation",
+          "Pre-flight validation",
+          "Project creation (.env files + folder structure)",
+          "Success output"
+        ]
+      },
+      "clone_existing": {
+        "steps": [
+          "Setup mode detection",
+          "Ask for repo URL",
+          "Print clone instructions"
+        ]
+      }
+    },
+    "error_scenarios": 8,
+    "review_status": "approved",
+    "deployment_status": "ready",
+    "next_steps": [
+      "Register skill in Claude Code",
+      "Test with 'new Project TEST'",
+      "Verify C:\\Repo\\Project\\Project-TEST\\ created",
+      "Update Claude Code docs",
+      "Begin using: 'new Project ABC'"
+    ]
+  }
+}
