@@ -13,7 +13,8 @@ triggers:
 
 **Trigger:** "new Project" (and variants)  
 **Purpose:** Scaffolds a complete client project with folders, templates, scripts, and configuration  
-**Status:** Ready for deployment
+**Status:** Ready for deployment  
+**Updated:** 2026-09-23
 
 ---
 
@@ -26,11 +27,15 @@ Say any of these to trigger the skill:
 - "Start a project for ABC"
 - "Add a project folder for XYZ"
 
-The skill will:
-1. Ask if this is a brand new project or cloning existing
-2. For new: Ask 3 questions (code, name, phase)
-3. Create complete folder structure at `C:\Repo\Project\Project-{CODE}`
-4. Show success message with next steps
+The skill will ask (one at a time):
+1. Setup mode: "Brand new or cloning?"
+2. Q1: Client code (required)
+3. Q2: Client name (optional — defaults to code)
+4. Q3: Phase description (required)
+5. Optional: Populate .env with API keys? (optional)
+6. Confirmation before creating
+
+Then creates complete folder structure at `C:\Repo\Project\Project-{CODE}` and shows success message with next steps
 
 ---
 
@@ -44,8 +49,17 @@ The skill will:
 - Git repo initialized with initial commit
 - Pre-commit hook for auto-frontmatter injection
 - PHASES.md, README.md, Dashboard.md, client-config.json
+- `.env` file (with optional values populated, if provided)
 
 **Total:** ~40+ files, 18+ subfolders, fully ready to work
+
+## How It Works
+
+1. Claude Code skill asks user questions one at a time
+2. Collects all answers (client code, name, phase, optional .env values)
+3. Calls PowerShell script: `Deploy-NewClientProject.ps1` with parameters
+4. Script creates complete project structure
+5. Returns success message to user
 
 ---
 
